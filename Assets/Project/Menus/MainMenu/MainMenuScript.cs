@@ -3,7 +3,11 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     // Private
+    [Header("Menus")]
     [SerializeField] private Canvas mainMenu;
+    [SerializeField] Canvas levelSelectMenu;
+    
+    [Header("Audio")]
     private AudioSource audioSource;
     [SerializeField] AudioClip interactSound;
 
@@ -36,5 +40,6 @@ public class MainMenu : MonoBehaviour
         audioSource.clip = interactSound;
         audioSource.Play();
         HideMenu();
+        levelSelectMenu.gameObject.SetActive(true);
     }
 }
