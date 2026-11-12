@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public enum Level{
+        Level1,
+        Level2,
+        Level3
+    };
+
     // Structs
     [System.Serializable]
     public struct LevelData
@@ -13,6 +19,7 @@ public class GameManagerScript : MonoBehaviour
         public bool level2Unlocked;
         public bool level3Unlocked;
         public bool badgeUnlocked;
+        public Level currentLevel;
     };
     
     [Header("Audio")]
