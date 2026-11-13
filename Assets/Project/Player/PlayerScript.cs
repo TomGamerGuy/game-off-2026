@@ -8,6 +8,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] GameObject gameManager;
     private GameScript gameScript;
 
+    [Header("Collision")]
+    [SerializeField] GameObject bottomBorder;
+
     // Public
     [NonSerialized] public Rigidbody2D rb;
     [NonSerialized] public Vector2 spawnPosition;
@@ -37,5 +40,13 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject == bottomBorder)
+        {
+            gameScript.GameOver();
+        }
     }
 }

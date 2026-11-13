@@ -156,8 +156,8 @@ public class LevelSelectScript : MonoBehaviour
     }
 
     // Check the tint and interactivity of buttons based on level data
-    void LevelButtonCheck()
-    {
+    public void LevelButtonCheck()
+    {     
         if (gameManagerScript.levelData.level1Score > gameScript.unlockScore && !gameManagerScript.levelData.level2Unlocked)
         {
             gameManagerScript.levelData.level2Unlocked = true;
@@ -224,5 +224,6 @@ public class LevelSelectScript : MonoBehaviour
         levelBackground.GetComponent<Image>().sprite = backgroundImage;
         levelSelectMenu.gameObject.SetActive(false);
         gameCanvas.gameObject.SetActive(true);
+        gameScript.UpdateScore(0, 0);
     }
 }
