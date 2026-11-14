@@ -11,9 +11,17 @@ public class PlayerScript : MonoBehaviour
     [Header("Collision")]
     [SerializeField] GameObject bottomBorder;
 
+    [Header("Sprites")]
+    [SerializeField] Sprite shieldSprite;
+    [SerializeField] Sprite baseSprite;
+    [SerializeField] Sprite brokenSprite;
+
     // Public
     [NonSerialized] public Rigidbody2D rb;
     [NonSerialized] public Vector2 spawnPosition;
+
+    //Private
+    private int health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +55,52 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject == bottomBorder)
         {
             gameScript.GameOver();
+
+            //TEMP
+            Damage();
+            gameScript.UpdateScore(10);
+        }
+    }
+
+    // Load the correct sprites for health
+    void LoadHealth()
+    {
+        SpriteRenderer playerSprite = GetComponent<SpriteRenderer>();
+        switch (health)
+        {
+            case 3:
+                playerSprite.sprite = shieldSprite;
+            break;
+            case 2:
+                playerSprite.sprite = baseSprite;
+            break;
+            case 1:
+                playerSprite.sprite = brokenSprite;
+            break;
+            default:
+                playerSprite.sprite = brokenSprite;
+            break;
+        }
+    }
+
+    // Set the players health
+    public void SetHealth(int h = 3)
+    {
+        health = h;
+        LoadHealth();
+    }
+
+    // Damage the player
+    public void Damage()
+    {
+        health--;
+        if (health <= 0)
+        {
+            gameScript.GameOver();
+        }
+        else
+        {
+            LoadHealth();
         }
     }
 }

@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 public class GameScript : MonoBehaviour
 {
@@ -18,6 +20,12 @@ public class GameScript : MonoBehaviour
     [SerializeField] GameObject levelSelectMenu;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI highScoreText;
+    [SerializeField] GameObject backCanvas;
+    [SerializeField] GameObject countdownCanvas;
+    [SerializeField] TextMeshProUGUI countdownText;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
 
     [Header("Game Variables")]
     public float gravityForce;
@@ -29,6 +37,8 @@ public class GameScript : MonoBehaviour
     void Start()
     {
         score = 0;
+        backCanvas.SetActive(false);
+        countdownCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,14 +47,33 @@ public class GameScript : MonoBehaviour
         if (gameCanvas.activeSelf)
         {
             if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
-            {
-                // TEMP
-                gameCanvas.SetActive(false);
-                levelSelectMenu.SetActive(true);
-                
+            {                  
                 // Activate prompt
+                backCanvas.SetActive(true);
+                Time.timeScale = 0.0f;
             }
         }
+    }
+
+    // If the yes button is clicked on the back menu
+    public void BackYes()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+
+        backCanvas.SetActive(false);
+        Time.timeScale = 1.0f;
+
+        gameCanvas.SetActive(false);
+        levelSelectMenu.SetActive(true);
+    }
+
+    // If the no button is clicked on the back menu
+    public void BackNo()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+
+        backCanvas.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     // Add the parameter to the correct score and update
@@ -101,6 +130,29 @@ public class GameScript : MonoBehaviour
 
         // TEMP
         Debug.Log("Death");
-        UpdateScore(10);
+    }
+
+    // Countdown before starting the level
+    public void StartCountdown()
+    {
+        //Do the countdown
+        StartCoroutine(Countdown(3));
+    }
+
+    private IEnumerator Countdown(int start)
+    {
+        Time.timeScale = 0.0f;
+        countdownCanvas.SetActive(true);
+        
+        for (int i = start; i > 0; i--)
+        {
+            countdownText.text = i.ToString();
+
+            yield return new WaitForSecondsRealtime(1f);
+        }
+
+        countdownCanvas.SetActive(false);
+        Time.timeScale = 1.0f;
+
     }
 }

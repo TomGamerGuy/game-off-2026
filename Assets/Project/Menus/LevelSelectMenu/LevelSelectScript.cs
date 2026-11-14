@@ -3,12 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.InputSystem;
 
 public class LevelSelectScript : MonoBehaviour
 {
     [Header("Menus")]
     [SerializeField] Canvas levelSelectMenu;
     [SerializeField] Canvas cheatMenu;
+    [SerializeField] Canvas badgeCanvas;
 
     [Header("Buttons")]
     [SerializeField] Button muteButton;
@@ -17,6 +19,7 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] Button level1Button;
     [SerializeField] Button level2Button;
     [SerializeField] Button level3Button;
+    [SerializeField] Button badgeButton;
 
     [Header("GameManager")]
     [SerializeField] GameObject gameManager;
@@ -27,7 +30,7 @@ public class LevelSelectScript : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] AudioClip interactSound;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     private AudioSource menuAudio;
 
     [Header("Levels")]
@@ -55,6 +58,8 @@ public class LevelSelectScript : MonoBehaviour
         gameCanvas.gameObject.SetActive(false);
         gameScript = gameManager.GetComponent<GameScript>();
         playerScript = player.GetComponent<PlayerScript>();
+        badgeButton.gameObject.SetActive(false);
+        badgeCanvas.gameObject.SetActive(false);
 
         LevelButtonCheck();
 
@@ -64,7 +69,10 @@ public class LevelSelectScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (badgeCanvas.gameObject.activeSelf && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            badgeCanvas.gameObject.SetActive(false);
+        }
     }
 
     void ShowMenu()
@@ -155,6 +163,12 @@ public class LevelSelectScript : MonoBehaviour
         LoadLevel(Level.Level3);
     }
 
+    // Show a prompt that the player has earned the Captain's badge
+    public void BadgeButton()
+    {
+        badgeCanvas.gameObject.SetActive(!badgeCanvas.gameObject.activeSelf);
+    }
+
     // Check the tint and interactivity of buttons based on level data
     public void LevelButtonCheck()
     {     
@@ -188,12 +202,22 @@ public class LevelSelectScript : MonoBehaviour
         {
             level3Button.interactable = false;
         }
+
+        if (gameManagerScript.levelData.badgeUnlocked)
+        {
+            badgeButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            badgeButton.gameObject.SetActive(false);
+        }
     }
 
     void LoadLevel(Level level)
     {
         Sprite backgroundImage = level1Background; // To avoid an error
-        playerScript.rb.MovePosition(playerScript.spawnPosition);
+        playerScript.transform.position = playerScript.spawnPosition;
+        playerScript.rb.linearVelocity = Vector2.zero;
 
         switch (level)
         {
@@ -225,5 +249,8 @@ public class LevelSelectScript : MonoBehaviour
         levelSelectMenu.gameObject.SetActive(false);
         gameCanvas.gameObject.SetActive(true);
         gameScript.UpdateScore(0, 0);
+        playerScript.SetHealth();
+
+        gameScript.StartCountdown();
     }
 }
