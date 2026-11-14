@@ -2276,6 +2276,7 @@ GameObject:
   - component: {fileID: 1298795442}
   - component: {fileID: 1298795440}
   - component: {fileID: 1298795443}
+  - component: {fileID: 1298795444}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2442,6 +2443,32 @@ MonoBehaviour:
   gravityForce: 0
   playerSpeed: 6
   unlockScore: 1000
+--- !u!114 &1298795444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298795439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1502a91ac43e34295e1fe656dc1012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawnerScript
+  asteroidOne: {fileID: 3365293527303369476, guid: 5ab31ed370bb3e042bd986dc065b7444, type: 3}
+  asteroidTwo: {fileID: 6801566509243134613, guid: f58e57a524a70634db6ec24a056d4307, type: 3}
+  asteroidThree: {fileID: 537748147583692395, guid: 11e8bff4441f656439c0c4a63679ab60, type: 3}
+  debrisOne: {fileID: 7645737057471855121, guid: 63a125c5415945f448fda5f681de1c2c, type: 3}
+  debrisTwo: {fileID: 4319715623052759540, guid: dcc33723ea8c8d04da9cbca2f6ed3a28, type: 3}
+  debrisThree: {fileID: 1817609823275298930, guid: 265b6a44b7fb6f540987cacabf1cb688, type: 3}
+  player: {fileID: 1949883158}
+  gameManager: {fileID: 1298795439}
+  gameCanvas: {fileID: 162796157}
+  maxObstacles: 10
+  baseSpeed: 5
+  minWaitTime: 0
+  maxWaitTime: 3
+  obstacleScore: 10
 --- !u!1 &1308211859
 GameObject:
   m_ObjectHideFlags: 0

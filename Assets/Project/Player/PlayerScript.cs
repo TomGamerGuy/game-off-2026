@@ -55,10 +55,6 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject == bottomBorder)
         {
             gameScript.GameOver();
-
-            //TEMP
-            Damage();
-            gameScript.UpdateScore(10);
         }
     }
 
