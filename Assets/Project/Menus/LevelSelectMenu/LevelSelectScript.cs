@@ -40,14 +40,6 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] Sprite level3Background;
     [SerializeField] GameObject levelBackground;
 
-    // Enums
-    enum Level
-    {
-        Level1,
-        Level2,
-        Level3
-    };
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -137,7 +129,7 @@ public class LevelSelectScript : MonoBehaviour
         menuAudio.clip = interactSound;
         menuAudio.Play();
 
-        LoadLevel(Level.Level1);
+        LoadLevel(GameManagerScript.Level.Level1);
     }
 
     // Load level 2
@@ -148,7 +140,7 @@ public class LevelSelectScript : MonoBehaviour
         menuAudio.clip = interactSound;
         menuAudio.Play();
 
-        LoadLevel(Level.Level2);
+        LoadLevel(GameManagerScript.Level.Level2);
     }
 
     // Load level 3
@@ -159,7 +151,7 @@ public class LevelSelectScript : MonoBehaviour
         menuAudio.clip = interactSound;
         menuAudio.Play();
 
-        LoadLevel(Level.Level3);
+        LoadLevel(GameManagerScript.Level.Level3);
     }
 
     // Show a prompt that the player has earned the Captain's badge
@@ -212,7 +204,7 @@ public class LevelSelectScript : MonoBehaviour
         }
     }
 
-    void LoadLevel(Level level)
+    public void LoadLevel(GameManagerScript.Level level)
     {
         Sprite backgroundImage = level1Background; // To avoid an error
         player.gameObject.SetActive(true);
@@ -221,19 +213,19 @@ public class LevelSelectScript : MonoBehaviour
 
         switch (level)
         {
-            case Level.Level1:
+            case GameManagerScript.Level.Level1:
                 // Load level 1 assets and variables. Art, gravity and score
                 backgroundImage = level1Background;
                 gameScript.gravityForce = gameScript.planetGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level1;
             break;
-            case Level.Level2:
+            case GameManagerScript.Level.Level2:
                 // Load level 2 assets and variables
                 backgroundImage = level2Background;
                 gameScript.gravityForce = gameScript.starGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level2;
             break;
-            case Level.Level3:
+            case GameManagerScript.Level.Level3:
                 // Load level 3 assets and variables
                 backgroundImage = level3Background;
                 gameScript.gravityForce = gameScript.blackHoleGravity;

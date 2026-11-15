@@ -14,6 +14,7 @@ public class GameScript : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] GameObject player;
+    [SerializeField] GameObject explosionEffect;
 
     [Header("Menus")]
     [SerializeField] GameObject gameCanvas;
@@ -24,6 +25,7 @@ public class GameScript : MonoBehaviour
     [SerializeField] GameObject countdownCanvas;
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] TextMeshProUGUI unlockText;
+    [SerializeField] GameObject gameOverCanvas;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
@@ -45,7 +47,8 @@ public class GameScript : MonoBehaviour
         score = 0;
         backCanvas.SetActive(false);
         countdownCanvas.SetActive(false);
-        player.gameObject.SetActive(false);
+        player.SetActive(false);
+        gameOverCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -60,6 +63,15 @@ public class GameScript : MonoBehaviour
                 Time.timeScale = 0.0f;
             }
         }
+    }
+
+    // Restart the level
+    public void RestartButton()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+
+        gameOverCanvas.SetActive(false);
+        levelSelectScript.LoadLevel(gameManagerScript.levelData.currentLevel);
     }
 
     // If the yes button is clicked on the back menu
@@ -136,8 +148,11 @@ public class GameScript : MonoBehaviour
     public void GameOver(){
         ScoreCheck();
 
-        // TEMP
-        Debug.Log("Death");
+        Instantiate(explosionEffect, player.transform.position, Quaternion.identity);
+
+        Time.timeScale = 0.0f;
+        player.SetActive(false);
+        gameOverCanvas.SetActive(true);
     }
 
     // Countdown before starting the level

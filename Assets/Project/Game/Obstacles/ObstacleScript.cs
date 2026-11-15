@@ -7,6 +7,7 @@ public class ObstacleScript : MonoBehaviour
     private GameScript gameScript;
     private ObstacleSpawnerScript obstacleSpawner;
     private bool destroyed = false;
+    private GameObject explosion;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,13 +15,14 @@ public class ObstacleScript : MonoBehaviour
         //
     }
 
-    public void Initialize(ObstacleSpawnerScript spawner, PlayerScript player, GameScript game, float baseSpeed)
+    public void Initialize(ObstacleSpawnerScript spawner, PlayerScript player, GameScript game, float baseSpeed, GameObject explosionEffect)
     {
         obstacleSpawner = spawner;
         playerScript = player;
         gameScript = game;
         speed = baseSpeed;
         destroyed = false;
+        explosion = explosionEffect;
     }
 
     // Update is called once per frame
@@ -42,11 +44,11 @@ public class ObstacleScript : MonoBehaviour
         {
             playerScript.Damage();
         }
-        Explode();
+        Explode(collision);
     }
 
     // Play explode effect and destroy
-    void Explode()
+    void Explode(Collision2D collision)
     {
         if (destroyed)
         {
@@ -55,7 +57,8 @@ public class ObstacleScript : MonoBehaviour
         
         destroyed = true;
 
-        // Explosion
+        Vector2 contactPoint = collision.GetContact(0).point;
+        Instantiate(explosion, contactPoint, Quaternion.identity);
 
         obstacleSpawner.obstacleCount--;
         Destroy(gameObject);

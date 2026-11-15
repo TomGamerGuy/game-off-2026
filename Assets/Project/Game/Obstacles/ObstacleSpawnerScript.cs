@@ -31,6 +31,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
     [SerializeField] float minWaitTime = 5f;
     [SerializeField] float maxWaitTime = 5f;
     public int obstacleScore = 10;
+    [SerializeField] GameObject explosionEffect;
     private bool isSpawning = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -96,7 +97,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
                     break;
                 }
                 ObstacleScript obstacleScript = obstacle.GetComponent<ObstacleScript>();
-                obstacleScript.Initialize(this, playerScript, gameScript, baseSpeed);
+                obstacleScript.Initialize(this, playerScript, gameScript, baseSpeed, explosionEffect);
 
                 obstacleCount++;
             }
