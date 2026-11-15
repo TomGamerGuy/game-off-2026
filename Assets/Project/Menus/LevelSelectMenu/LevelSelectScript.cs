@@ -26,7 +26,7 @@ public class LevelSelectScript : MonoBehaviour
     private GameManagerScript gameManagerScript;
     private GameScript gameScript;
     [SerializeField] GameObject player;
-    private PlayerScript playerScript;
+    [SerializeField] PlayerScript playerScript;
 
     [Header("Audio")]
     [SerializeField] AudioClip interactSound;
@@ -57,7 +57,6 @@ public class LevelSelectScript : MonoBehaviour
         gameManagerScript = gameManager.GetComponent<GameManagerScript>();
         gameCanvas.gameObject.SetActive(false);
         gameScript = gameManager.GetComponent<GameScript>();
-        playerScript = player.GetComponent<PlayerScript>();
         badgeButton.gameObject.SetActive(false);
         badgeCanvas.gameObject.SetActive(false);
 
@@ -216,6 +215,7 @@ public class LevelSelectScript : MonoBehaviour
     void LoadLevel(Level level)
     {
         Sprite backgroundImage = level1Background; // To avoid an error
+        player.gameObject.SetActive(true);
         playerScript.transform.position = playerScript.spawnPosition;
         playerScript.rb.linearVelocity = Vector2.zero;
 
@@ -224,19 +224,19 @@ public class LevelSelectScript : MonoBehaviour
             case Level.Level1:
                 // Load level 1 assets and variables. Art, gravity and score
                 backgroundImage = level1Background;
-                gameScript.gravityForce = 2f;
+                gameScript.gravityForce = gameScript.planetGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level1;
             break;
             case Level.Level2:
                 // Load level 2 assets and variables
                 backgroundImage = level2Background;
-                gameScript.gravityForce = 4f;
+                gameScript.gravityForce = gameScript.starGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level2;
             break;
             case Level.Level3:
                 // Load level 3 assets and variables
                 backgroundImage = level3Background;
-                gameScript.gravityForce = 8f;
+                gameScript.gravityForce = gameScript.blackHoleGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level3;
             break;
             default:
@@ -250,6 +250,15 @@ public class LevelSelectScript : MonoBehaviour
         gameCanvas.gameObject.SetActive(true);
         gameScript.UpdateScore(0, 0);
         playerScript.SetHealth();
+
+        // Destroy active obstacles
+        GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+
+        // 2. Loop through the array and destroy each one
+        foreach (GameObject obstacle in obstacles)
+        {
+            Destroy(obstacle);
+        }
 
         gameScript.StartCountdown();
     }

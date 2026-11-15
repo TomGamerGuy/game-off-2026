@@ -23,6 +23,7 @@ public class GameScript : MonoBehaviour
     [SerializeField] GameObject backCanvas;
     [SerializeField] GameObject countdownCanvas;
     [SerializeField] TextMeshProUGUI countdownText;
+    [SerializeField] TextMeshProUGUI unlockText;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
@@ -33,12 +34,18 @@ public class GameScript : MonoBehaviour
     public int unlockScore = 1000;
     [NonSerialized] public int score;
 
+    [Header("Gravtiy Levels")]
+    public float planetGravity = 2f;
+    public float starGravity = 4f;
+    public float blackHoleGravity = 6f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         score = 0;
         backCanvas.SetActive(false);
         countdownCanvas.SetActive(false);
+        player.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,6 +72,7 @@ public class GameScript : MonoBehaviour
 
         gameCanvas.SetActive(false);
         levelSelectMenu.SetActive(true);
+        player.gameObject.SetActive(false);
     }
 
     // If the no button is clicked on the back menu
@@ -143,6 +151,43 @@ public class GameScript : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         countdownCanvas.SetActive(true);
+
+        switch (gameManagerScript.levelData.currentLevel)
+        {
+            case GameManagerScript.Level.Level1:
+                if (gameManagerScript.levelData.level2Unlocked)
+                {
+                    unlockText.text = "Level 2 already unlocked";
+                }
+                else
+                {
+                    unlockText.text = unlockScore + " to unlock level 2";
+                }
+            break;
+            case GameManagerScript.Level.Level2:
+                if (gameManagerScript.levelData.level3Unlocked)
+                {
+                    unlockText.text = "Level 3 already unlocked";
+                }
+                else
+                {
+                    unlockText.text = unlockScore + " to unlock level 3";
+                }
+            break;
+            case GameManagerScript.Level.Level3:
+                if (gameManagerScript.levelData.badgeUnlocked)
+                {
+                    unlockText.text = "Badge already unlocked";
+                }
+                else
+                {
+                    unlockText.text = unlockScore + " to unlock badge";
+                }
+            break;
+            default:
+                //
+            break;
+        }
         
         for (int i = start; i > 0; i--)
         {

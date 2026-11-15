@@ -16,9 +16,15 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] Sprite baseSprite;
     [SerializeField] Sprite brokenSprite;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip collisionSound;
+    private AudioSource audioSource;
+
+    [Header("Components")]
+    public Rigidbody2D rb;
+
     // Public
-    [NonSerialized] public Rigidbody2D rb;
-    [NonSerialized] public Vector2 spawnPosition;
+    public Vector2 spawnPosition;
 
     //Private
     private int health;
@@ -27,9 +33,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         gameScript = gameManager.GetComponent<GameScript>();
-        rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
-        spawnPosition = rb.position;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -52,6 +57,12 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!collision.gameObject.CompareTag("TopBorder"))
+        {
+            audioSource.clip = collisionSound;
+            audioSource.Play();
+        }
+        
         if (collision.gameObject == bottomBorder)
         {
             gameScript.GameOver();
@@ -88,7 +99,7 @@ public class PlayerScript : MonoBehaviour
 
     // Damage the player
     public void Damage()
-    {
+    { 
         health--;
         if (health <= 0)
         {

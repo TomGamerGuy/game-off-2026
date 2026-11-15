@@ -26,9 +26,9 @@ public class ObstacleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.down * speed * Time.deltaTime;
+        transform.position += Vector3.left * speed * Time.deltaTime;
 
-        if (transform.position.y < -15f)
+        if (transform.position.x < -15f)
         {
             obstacleSpawner.obstacleCount--;
             gameScript.UpdateScore(obstacleSpawner.obstacleScore);

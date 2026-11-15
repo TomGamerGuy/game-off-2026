@@ -69,7 +69,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
                 GameObject obstacle;
                 float x = UnityEngine.Random.Range(10.0f, 15.0f);
                 float y = UnityEngine.Random.Range(-5.0f, 5.0f);
-                Vector3 position = new Vector3(x, y);
+                Vector3 position = new Vector3(x, y, 0f);
 
                 switch (type)
                 {
