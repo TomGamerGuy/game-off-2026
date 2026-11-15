@@ -11,6 +11,7 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] Canvas levelSelectMenu;
     [SerializeField] Canvas cheatMenu;
     [SerializeField] Canvas badgeCanvas;
+    [SerializeField] GameObject infoCanvas;
 
     [Header("Buttons")]
     [SerializeField] Button muteButton;
@@ -51,6 +52,7 @@ public class LevelSelectScript : MonoBehaviour
         gameScript = gameManager.GetComponent<GameScript>();
         badgeButton.gameObject.SetActive(false);
         badgeCanvas.gameObject.SetActive(false);
+        infoCanvas.SetActive(false);
 
         LevelButtonCheck();
 
@@ -64,6 +66,10 @@ public class LevelSelectScript : MonoBehaviour
         {
             badgeCanvas.gameObject.SetActive(false);
         }
+        if (infoCanvas.activeSelf && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            infoCanvas.SetActive(false);
+        }
     }
 
     void ShowMenu()
@@ -74,6 +80,12 @@ public class LevelSelectScript : MonoBehaviour
     void HideMenu()
     {
         levelSelectMenu.gameObject.SetActive(false);
+    }
+
+    // Shows info prompt
+    public void InfoButton()
+    {
+        infoCanvas.SetActive(true);
     }
 
     // Mutes and unmutes music
@@ -157,7 +169,7 @@ public class LevelSelectScript : MonoBehaviour
     // Show a prompt that the player has earned the Captain's badge
     public void BadgeButton()
     {
-        badgeCanvas.gameObject.SetActive(!badgeCanvas.gameObject.activeSelf);
+        badgeCanvas.gameObject.SetActive(true);
     }
 
     // Check the tint and interactivity of buttons based on level data
