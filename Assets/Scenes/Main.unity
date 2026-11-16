@@ -3441,7 +3441,7 @@ MonoBehaviour:
   audioSource: {fileID: 1298795442}
   gravityForce: 0
   playerSpeed: 6
-  unlockScore: 1000
+  unlockScore: 500
   planetGravity: 2
   starGravity: 4
   blackHoleGravity: 6
@@ -3461,15 +3461,15 @@ MonoBehaviour:
   asteroidTwo: {fileID: 2511597009622586237, guid: f58e57a524a70634db6ec24a056d4307, type: 3}
   asteroidThree: {fileID: 7937548048631946984, guid: 11e8bff4441f656439c0c4a63679ab60, type: 3}
   debrisOne: {fileID: 8171943151061404015, guid: 63a125c5415945f448fda5f681de1c2c, type: 3}
-  debrisTwo: {fileID: 1817609823275298930, guid: 265b6a44b7fb6f540987cacabf1cb688, type: 3}
+  debrisTwo: {fileID: 8059076666683391022, guid: 265b6a44b7fb6f540987cacabf1cb688, type: 3}
   debrisThree: {fileID: 8833113747808095825, guid: dcc33723ea8c8d04da9cbca2f6ed3a28, type: 3}
   player: {fileID: 1949883158}
   gameManager: {fileID: 1298795439}
   gameCanvas: {fileID: 162796157}
-  maxObstacles: 6
+  maxObstacles: 8
   baseSpeed: 5
   minWaitTime: 0
-  maxWaitTime: 1
+  maxWaitTime: 3
   obstacleScore: 10
   explosionEffect: {fileID: 2569630062737607726, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
 --- !u!1 &1308211859

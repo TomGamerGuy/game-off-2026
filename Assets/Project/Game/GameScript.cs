@@ -158,6 +158,8 @@ public class GameScript : MonoBehaviour
     // Countdown before starting the level
     public void StartCountdown()
     {
+        gameOverCanvas.SetActive(false);
+        
         //Do the countdown
         StartCoroutine(Countdown(3));
     }
