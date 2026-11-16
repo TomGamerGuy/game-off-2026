@@ -8,13 +8,13 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] GameObject gameManager;
     private GameScript gameScript;
 
-    [Header("Collision")]
-    [SerializeField] GameObject bottomBorder;
-
     [Header("Sprites")]
     [SerializeField] Sprite shieldSprite;
     [SerializeField] Sprite baseSprite;
     [SerializeField] Sprite brokenSprite;
+    [SerializeField] GameObject shieldFlame;
+    [SerializeField] GameObject baseFlame;
+    [SerializeField] GameObject brokenFlame;
 
     [Header("Audio")]
     [SerializeField] AudioClip collisionSound;
@@ -35,6 +35,9 @@ public class PlayerScript : MonoBehaviour
         gameScript = gameManager.GetComponent<GameScript>();
         rb.freezeRotation = true;
         audioSource = GetComponent<AudioSource>();
+        shieldFlame.SetActive(true);
+        baseFlame.SetActive(false);
+        brokenFlame.SetActive(false);
     }
 
     void FixedUpdate()
@@ -57,15 +60,10 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("TopBorder"))
+        if (!collision.gameObject.CompareTag("Border"))
         {
             audioSource.clip = collisionSound;
             audioSource.Play();
-        }
-        
-        if (collision.gameObject == bottomBorder)
-        {
-            gameScript.GameOver();
         }
     }
 
@@ -77,15 +75,27 @@ public class PlayerScript : MonoBehaviour
         {
             case 3:
                 playerSprite.sprite = shieldSprite;
+                shieldFlame.SetActive(true);
+                baseFlame.SetActive(false);
+                brokenFlame.SetActive(false);
             break;
             case 2:
                 playerSprite.sprite = baseSprite;
+                shieldFlame.SetActive(false);
+                baseFlame.SetActive(true);
+                brokenFlame.SetActive(false);
             break;
             case 1:
                 playerSprite.sprite = brokenSprite;
+                shieldFlame.SetActive(false);
+                baseFlame.SetActive(false);
+                brokenFlame.SetActive(true);
             break;
             default:
                 playerSprite.sprite = brokenSprite;
+                shieldFlame.SetActive(false);
+                baseFlame.SetActive(false);
+                brokenFlame.SetActive(true);
             break;
         }
     }

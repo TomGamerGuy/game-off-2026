@@ -26,6 +26,7 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] GameObject gameManager;
     private GameManagerScript gameManagerScript;
     private GameScript gameScript;
+    private ObstacleSpawnerScript obstacleSpawnerScript;
     [SerializeField] GameObject player;
     [SerializeField] PlayerScript playerScript;
 
@@ -50,6 +51,7 @@ public class LevelSelectScript : MonoBehaviour
         gameManagerScript = gameManager.GetComponent<GameManagerScript>();
         gameCanvas.gameObject.SetActive(false);
         gameScript = gameManager.GetComponent<GameScript>();
+        obstacleSpawnerScript = gameManager.GetComponent<ObstacleSpawnerScript>();
         badgeButton.gameObject.SetActive(false);
         badgeCanvas.gameObject.SetActive(false);
         infoCanvas.SetActive(false);
@@ -219,7 +221,7 @@ public class LevelSelectScript : MonoBehaviour
     public void LoadLevel(GameManagerScript.Level level)
     {
         Sprite backgroundImage = level1Background; // To avoid an error
-        player.gameObject.SetActive(true);
+        player.SetActive(true);
         playerScript.transform.position = playerScript.spawnPosition;
         playerScript.rb.linearVelocity = Vector2.zero;
 
@@ -254,6 +256,7 @@ public class LevelSelectScript : MonoBehaviour
         gameCanvas.gameObject.SetActive(true);
         gameScript.UpdateScore(0, 0);
         playerScript.SetHealth();
+        obstacleSpawnerScript.obstacleCount = 0;
 
         // Destroy active obstacles
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");

@@ -6,7 +6,7 @@ TagManager:
   tags:
   - GameManager
   - Obstacle
-  - TopBorder
+  - Border
   layers:
   - Default
   - TransparentFX
