@@ -67,6 +67,10 @@ public class ObstacleSpawnerScript : MonoBehaviour
             {
                 // Spawn Obstacle
                 int type = UnityEngine.Random.Range(0, 7);
+                if (type == 6 && UnityEngine.Random.Range(0, 4) != 3)
+                {
+                    type = UnityEngine.Random.Range(0, 6);
+                }
                 GameObject obstacle;
                 float x = UnityEngine.Random.Range(10.0f, 15.0f);
                 float y = UnityEngine.Random.Range(-5.0f, 5.0f);
