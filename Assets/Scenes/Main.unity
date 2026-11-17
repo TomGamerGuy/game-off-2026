@@ -2162,8 +2162,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -234}
-  m_SizeDelta: {x: 722.8528, y: 80.384}
+  m_AnchoredPosition: {x: 36.388374, y: -235.86604}
+  m_SizeDelta: {x: 795.6295, y: 84.1161}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754749131
 MonoBehaviour:
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000 to unlock level 2
+  m_text: Level 2 already unlocked
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42921ab2e868a0447a9a7823d0de831d, type: 2}
   m_sharedMaterial: {fileID: 613450202172898663, guid: 42921ab2e868a0447a9a7823d0de831d, type: 2}
@@ -2882,8 +2882,8 @@ MonoBehaviour:
   interactSound: {fileID: 8300000, guid: 758cc9e8839228845abc06b74f555a8d, type: 3}
   audioSource: {fileID: 870081267}
   gameCanvas: {fileID: 162796161}
-  level1Background: {fileID: 6008755849024553855, guid: 3c7029c3d0b0e584ba4e6786c55dcd48, type: 3}
-  level2Background: {fileID: 6008755849024553855, guid: 41969d5df0ad37a4b900a0207010bf9d, type: 3}
+  level1Background: {fileID: 7028842072390148906, guid: be87f59e173e4dc4587bbb1d301ba7e2, type: 3}
+  level2Background: {fileID: -3571278149730965589, guid: ca7690426bf2f7d4dbff6d33f50c3e0c, type: 3}
   level3Background: {fileID: 6008755849024553855, guid: 841bb8ac92f153840a530961a3e23ee0, type: 3}
   levelBackground: {fileID: 2074942344}
 --- !u!82 &870081267
@@ -3441,7 +3441,7 @@ MonoBehaviour:
   audioSource: {fileID: 1298795442}
   gravityForce: 0
   playerSpeed: 6
-  unlockScore: 500
+  unlockScore: 1000
   planetGravity: 2
   starGravity: 4
   blackHoleGravity: 6
@@ -3466,10 +3466,10 @@ MonoBehaviour:
   player: {fileID: 1949883158}
   gameManager: {fileID: 1298795439}
   gameCanvas: {fileID: 162796157}
-  maxObstacles: 8
+  maxObstacles: 10
   baseSpeed: 5
   minWaitTime: 0
-  maxWaitTime: 3
+  maxWaitTime: 1.5
   obstacleScore: 10
   explosionEffect: {fileID: 2569630062737607726, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
 --- !u!1 &1308211859

@@ -104,6 +104,9 @@ public class ObstacleSpawnerScript : MonoBehaviour
                 obstacleScript.Initialize(this, playerScript, gameScript, baseSpeed, explosionEffect);
 
                 obstacleCount++;
+                
+                // TEMP
+                Debug.Log("Obstacle Count: " + obstacleCount.ToString());
             }
         }
 
