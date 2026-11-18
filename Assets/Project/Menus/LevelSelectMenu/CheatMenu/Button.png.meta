@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0c0aa5367c10e9d4781d3ca313810245
+guid: ab074ad8d6441f24faf85a9285998c18
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6008755849024553855
-    second: Placeholder_0
+      213: 649223268058989734
+    second: Button_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -56,7 +56,9 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationMethod: 0
   spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -113,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Placeholder_0
+      name: Button_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 200
-        height: 200
+        x: 52
+        y: 21
+        width: 196
+        height: 266
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f73c823eb93636350800000000000000
-      internalID: 6008755849024553855
+      spriteID: 6a403906f11820900800000000000000
+      internalID: 649223268058989734
       vertices: []
       indices: 
       edges: []
@@ -148,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Placeholder_0: 6008755849024553855
+      Button_0: 649223268058989734
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
