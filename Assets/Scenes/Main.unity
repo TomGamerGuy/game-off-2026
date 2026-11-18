@@ -2884,7 +2884,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 162796161}
   level1Background: {fileID: 7028842072390148906, guid: be87f59e173e4dc4587bbb1d301ba7e2, type: 3}
   level2Background: {fileID: -3571278149730965589, guid: ca7690426bf2f7d4dbff6d33f50c3e0c, type: 3}
-  level3Background: {fileID: 6008755849024553855, guid: 841bb8ac92f153840a530961a3e23ee0, type: 3}
+  level3Background: {fileID: 7605422557452617252, guid: 841bb8ac92f153840a530961a3e23ee0, type: 3}
   levelBackground: {fileID: 2074942344}
 --- !u!82 &870081267
 AudioSource:
