@@ -39,10 +39,13 @@ public class GameScript : MonoBehaviour
     public int unlockScore = 1000;
     [NonSerialized] public int score;
 
-    [Header("Gravtiy Levels")]
+    [Header("Level Variables")]
     public float planetGravity = 2f;
     public float starGravity = 4f;
     public float blackHoleGravity = 6f;
+    public int planetObstacles = 8;
+    public int starObstacles = 10;
+    public int blackHoleObstacles = 12;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -232,18 +232,21 @@ public class LevelSelectScript : MonoBehaviour
                 backgroundImage = level1Background;
                 gameScript.gravityForce = gameScript.planetGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level1;
+                obstacleSpawnerScript.maxObstacles = gameScript.planetObstacles;
             break;
             case GameManagerScript.Level.Level2:
                 // Load level 2 assets and variables
                 backgroundImage = level2Background;
                 gameScript.gravityForce = gameScript.starGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level2;
+                obstacleSpawnerScript.maxObstacles = gameScript.starObstacles;
             break;
             case GameManagerScript.Level.Level3:
                 // Load level 3 assets and variables
                 backgroundImage = level3Background;
                 gameScript.gravityForce = gameScript.blackHoleGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level3;
+                obstacleSpawnerScript.maxObstacles = gameScript.blackHoleObstacles;
             break;
             default:
                 //

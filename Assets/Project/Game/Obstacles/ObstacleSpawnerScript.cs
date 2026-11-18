@@ -25,7 +25,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
     private GameScript gameScript;
 
     [Header("Obstacles")]
-    [SerializeField] int maxObstacles = 10;
+    [NonSerialized] public int maxObstacles = 10;
     [NonSerialized] public int obstacleCount = 0;
     public float baseSpeed = 10f;
     [SerializeField] float minWaitTime = 5f;
