@@ -8,6 +8,9 @@ using System.Collections;
 
 public class GameScript : MonoBehaviour
 {
+    [Header("Playtesting")]
+    [SerializeField] bool canDie = true;
+    
     [Header("Scripts")]
     [SerializeField] GameManagerScript gameManagerScript;
     [SerializeField] LevelSelectScript levelSelectScript;
@@ -56,7 +59,7 @@ public class GameScript : MonoBehaviour
     {
         if (gameCanvas.activeSelf)
         {
-            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {                  
                 // Activate prompt
                 backCanvas.SetActive(true);
@@ -146,6 +149,11 @@ public class GameScript : MonoBehaviour
 
     // Run when the game ends
     public void GameOver(){
+        if (!canDie)
+        {
+            return;
+        }
+        
         ScoreCheck();
 
         Instantiate(explosionEffect, player.transform.position, Quaternion.identity);
