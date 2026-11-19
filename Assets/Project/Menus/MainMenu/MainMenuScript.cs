@@ -4,8 +4,9 @@ public class MainMenu : MonoBehaviour
 {
     // Private
     [Header("Menus")]
-    [SerializeField] private Canvas mainMenu;
-    [SerializeField] Canvas levelSelectMenu;
+    [SerializeField] GameObject mainMenu;
+    [SerializeField] GameObject levelSelectMenu;
+    [SerializeField] GameObject infoCanvas;
     
     [Header("Audio")]
     private AudioSource audioSource;
@@ -26,12 +27,12 @@ public class MainMenu : MonoBehaviour
 
     void ShowMenu()
     {
-        mainMenu.gameObject.SetActive(true);
+        mainMenu.SetActive(true);
     }
 
     void HideMenu()
     {
-        mainMenu.gameObject.SetActive(false);
+        mainMenu.SetActive(false);
     }
 
     // When the PlayButton is clicked, disable the menu
@@ -40,6 +41,7 @@ public class MainMenu : MonoBehaviour
         audioSource.clip = interactSound;
         audioSource.Play();
         HideMenu();
-        levelSelectMenu.gameObject.SetActive(true);
+        levelSelectMenu.SetActive(true);
+        infoCanvas.SetActive(true);
     }
 }

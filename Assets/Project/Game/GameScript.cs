@@ -29,6 +29,7 @@ public class GameScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] TextMeshProUGUI unlockText;
     [SerializeField] GameObject gameOverCanvas;
+    [SerializeField] GameObject scoreCanvas;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
@@ -55,11 +56,14 @@ public class GameScript : MonoBehaviour
         countdownCanvas.SetActive(false);
         player.SetActive(false);
         gameOverCanvas.SetActive(false);
+        scoreCanvas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        scoreCanvas.SetActive(gameCanvas.activeSelf);
+        
         if (gameCanvas.activeSelf)
         {
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && !countdownCanvas.activeSelf)
