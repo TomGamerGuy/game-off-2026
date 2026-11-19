@@ -3503,7 +3503,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 162796157}
   baseSpeed: 5
   minWaitTime: 0
-  maxWaitTime: 1.5
+  maxWaitTime: 1
   obstacleScore: 10
   explosionEffect: {fileID: 2569630062737607726, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
 --- !u!1 &1308211859
