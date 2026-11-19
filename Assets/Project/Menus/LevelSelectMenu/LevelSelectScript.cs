@@ -21,6 +21,7 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] Button level2Button;
     [SerializeField] Button level3Button;
     [SerializeField] Button badgeButton;
+    [SerializeField] Button cheatButton;
 
     [Header("GameManager")]
     [SerializeField] GameObject gameManager;
@@ -64,14 +65,15 @@ public class LevelSelectScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (badgeCanvas.gameObject.activeSelf && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        // Disabled currently
+        /* if (badgeCanvas.gameObject.activeSelf && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             badgeCanvas.gameObject.SetActive(false);
         }
         if (infoCanvas.activeSelf && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             infoCanvas.SetActive(false);
-        }
+        } */
     }
 
     void ShowMenu()
@@ -87,7 +89,8 @@ public class LevelSelectScript : MonoBehaviour
     // Shows info prompt
     public void InfoButton()
     {
-        infoCanvas.SetActive(true);
+        infoCanvas.SetActive(!infoCanvas.activeSelf);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     // Mutes and unmutes music
@@ -128,9 +131,11 @@ public class LevelSelectScript : MonoBehaviour
         menuAudio.Play();
 
         cheatMenu.gameObject.SetActive(false);
+        cheatButton.interactable = false;
         
         gameManagerScript.levelData.level2Unlocked = true;
-        gameManagerScript.levelData.level3Unlocked= true;
+        gameManagerScript.levelData.level3Unlocked = true;
+        gameManagerScript.levelData.badgeUnlocked = true;
 
         LevelButtonCheck();
     }
@@ -171,7 +176,8 @@ public class LevelSelectScript : MonoBehaviour
     // Show a prompt that the player has earned the Captain's badge
     public void BadgeButton()
     {
-        badgeCanvas.gameObject.SetActive(true);
+        badgeCanvas.gameObject.SetActive(!badgeCanvas.gameObject.activeSelf);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     // Check the tint and interactivity of buttons based on level data

@@ -62,7 +62,7 @@ public class GameScript : MonoBehaviour
     {
         if (gameCanvas.activeSelf)
         {
-            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && !countdownCanvas.activeSelf)
             {                  
                 // Activate prompt
                 backCanvas.SetActive(true);
