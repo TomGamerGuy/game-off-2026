@@ -239,6 +239,7 @@ public class LevelSelectScript : MonoBehaviour
                 gameScript.gravityForce = gameScript.planetGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level1;
                 obstacleSpawnerScript.maxObstacles = gameScript.planetObstacles;
+                obstacleSpawnerScript.baseSpeed = gameScript.planetSpeed;
             break;
             case GameManagerScript.Level.Level2:
                 // Load level 2 assets and variables
@@ -246,6 +247,7 @@ public class LevelSelectScript : MonoBehaviour
                 gameScript.gravityForce = gameScript.starGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level2;
                 obstacleSpawnerScript.maxObstacles = gameScript.starObstacles;
+                obstacleSpawnerScript.baseSpeed = gameScript.starSpeed;
             break;
             case GameManagerScript.Level.Level3:
                 // Load level 3 assets and variables
@@ -253,6 +255,7 @@ public class LevelSelectScript : MonoBehaviour
                 gameScript.gravityForce = gameScript.blackHoleGravity;
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level3;
                 obstacleSpawnerScript.maxObstacles = gameScript.blackHoleObstacles;
+                obstacleSpawnerScript.baseSpeed = gameScript.blackHoleSpeed;
             break;
             default:
                 //

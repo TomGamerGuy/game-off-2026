@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 185cabb6064766e4183872f0701b7363
+guid: 9b704d111d6f1c2499dc2d8ee9e8a52f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6008755849024553855
-    second: Placeholder_0
+      213: -7352339073622421304
+    second: Title_0
+  - first:
+      213: 578584420991164872
+    second: Title_1
+  - first:
+      213: -2586058674264470982
+    second: Title_2
+  - first:
+      213: -7455755055849233376
+    second: Title_3
+  - first:
+      213: -2920429353955323833
+    second: Title_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -56,7 +68,9 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationMethod: 0
   spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -113,23 +127,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Placeholder_0
+      name: Title_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 883
+        y: 170
+        width: 431
+        height: 581
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f73c823eb93636350800000000000000
-      internalID: 6008755849024553855
+      spriteID: 8c0d280219e37f990800000000000000
+      internalID: -7352339073622421304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title_1
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 695
+        width: 378
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c1e0c5277b870800800000000000000
+      internalID: 578584420991164872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title_2
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 163
+        width: 1436
+        height: 759
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3a062856597c1cd0800000000000000
+      internalID: -2586058674264470982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title_3
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 170
+        width: 279
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 024a8cb6746d78890800000000000000
+      internalID: -7455755055849233376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title_4
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 170
+        width: 287
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7409ed5c9fc8877d0800000000000000
+      internalID: -2920429353955323833
       vertices: []
       indices: 
       edges: []
@@ -138,7 +240,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 81bb7cbf57397c143ad3305040a55663
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +250,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Placeholder_0: 6008755849024553855
+      Title_0: -7352339073622421304
+      Title_1: 578584420991164872
+      Title_2: -2586058674264470982
+      Title_3: -7455755055849233376
+      Title_4: -2920429353955323833
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

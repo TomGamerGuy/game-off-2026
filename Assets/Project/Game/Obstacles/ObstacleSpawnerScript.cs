@@ -27,7 +27,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
     [Header("Obstacles")]
     [NonSerialized] public int maxObstacles = 10;
     [NonSerialized] public int obstacleCount = 0;
-    public float baseSpeed = 10f;
+    [NonSerialized] public float baseSpeed = 10f;
     [SerializeField] float minWaitTime = 5f;
     [SerializeField] float maxWaitTime = 5f;
     public int obstacleScore = 10;
@@ -72,7 +72,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
                     type = UnityEngine.Random.Range(0, 6);
                 }
                 GameObject obstacle;
-                float x = UnityEngine.Random.Range(10.0f, 15.0f);
+                float x = UnityEngine.Random.Range(15.0f, 20.0f);
                 float y = UnityEngine.Random.Range(-5.0f, 5.0f);
                 Vector3 position = new Vector3(x, y, 0f);
 

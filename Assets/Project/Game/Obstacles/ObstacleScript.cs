@@ -43,8 +43,10 @@ public class ObstacleScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerScript.Damage();
+            Explode(collision);
         }
-        Explode(collision);
+        obstacleSpawner.obstacleCount--;
+        Destroy(gameObject);
     }
 
     // Play explode effect and destroy
@@ -59,8 +61,5 @@ public class ObstacleScript : MonoBehaviour
 
         Vector2 contactPoint = collision.GetContact(0).point;
         Instantiate(explosion, contactPoint, Quaternion.identity);
-
-        obstacleSpawner.obstacleCount--;
-        Destroy(gameObject);
     }
 }

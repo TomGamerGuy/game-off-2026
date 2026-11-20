@@ -47,6 +47,9 @@ public class GameScript : MonoBehaviour
     public int planetObstacles = 8;
     public int starObstacles = 10;
     public int blackHoleObstacles = 12;
+    public float planetSpeed = 10f;
+    public float starSpeed = 10f;
+    public float blackHoleSpeed = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
