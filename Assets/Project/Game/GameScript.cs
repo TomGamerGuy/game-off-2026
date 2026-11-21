@@ -127,6 +127,11 @@ public class GameScript : MonoBehaviour
     // Add the parameter to the correct score and update
     public void UpdateScore(int add, int replace = -1)
     {      
+        if (!gameCanvas.activeSelf)
+        {
+            return;
+        }
+        
         if (replace >= 0)
         {
             score = replace;
