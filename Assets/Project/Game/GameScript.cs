@@ -48,12 +48,15 @@ public class GameScript : MonoBehaviour
     [Header("Level Variables")]
     public float planetGravity = 2f;
     public float starGravity = 4f;
+    public float neutronStarGravity = 6f;
     public float blackHoleGravity = 6f;
     public int planetObstacles = 8;
     public int starObstacles = 10;
+    public int neutronStarObstacles = 12;
     public int blackHoleObstacles = 12;
     public float planetSpeed = 10f;
     public float starSpeed = 10f;
+    public float neutronStarSpeed = 10f;
     public float blackHoleSpeed = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -172,6 +175,13 @@ public class GameScript : MonoBehaviour
                 }
                 highScoreText.text = "Highscore: " + gameManagerScript.levelData.level3Score;
             break;
+            case GameManagerScript.Level.Level4:
+                if (gameManagerScript.levelData.level4Score < score)
+                {
+                    gameManagerScript.levelData.level4Score = score;
+                }
+                highScoreText.text = "Highscore: " + gameManagerScript.levelData.level4Score;
+            break;
             default:
                 //
             break;
@@ -214,21 +224,21 @@ public class GameScript : MonoBehaviour
             case GameManagerScript.Level.Level1:
                 if (gameManagerScript.levelData.level2Unlocked)
                 {
-                    unlockText.text = "Level 2 already unlocked";
+                    unlockText.text = "Star already unlocked";
                 }
                 else
                 {
-                    unlockText.text = unlockScore + " to unlock level 2";
+                    unlockText.text = unlockScore + " to unlock Star";
                 }
             break;
             case GameManagerScript.Level.Level2:
-                if (gameManagerScript.levelData.level3Unlocked)
+                if (gameManagerScript.levelData.level4Unlocked)
                 {
-                    unlockText.text = "Level 3 already unlocked";
+                    unlockText.text = "Neutron Star already unlocked";
                 }
                 else
                 {
-                    unlockText.text = unlockScore + " to unlock level 3";
+                    unlockText.text = unlockScore + " to unlock Neutron Star";
                 }
             break;
             case GameManagerScript.Level.Level3:
@@ -239,6 +249,16 @@ public class GameScript : MonoBehaviour
                 else
                 {
                     unlockText.text = unlockScore + " to unlock badge";
+                }
+            break;
+            case GameManagerScript.Level.Level4:
+                if (gameManagerScript.levelData.level3Unlocked)
+                {
+                    unlockText.text = "Black Hole already unlocked";
+                }
+                else
+                {
+                    unlockText.text = unlockScore + " to unlock Black Hole";
                 }
             break;
             default:

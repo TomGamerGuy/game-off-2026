@@ -68,7 +68,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
             {
                 // Spawn Obstacle
                 int type = UnityEngine.Random.Range(1, 9);
-                if (type == 6 && UnityEngine.Random.Range(1, 4) != 3)
+                if (type == 6 && UnityEngine.Random.Range(1, 5) != 3)
                 {
                     type = UnityEngine.Random.Range(1, 9);
                 }

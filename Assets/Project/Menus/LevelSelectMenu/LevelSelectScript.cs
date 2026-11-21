@@ -22,6 +22,7 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] Button level1Button;
     [SerializeField] Button level2Button;
     [SerializeField] Button level3Button;
+    [SerializeField] Button level4Button;
     [SerializeField] Button badgeButton;
     [SerializeField] Button cheatButton;
 
@@ -43,11 +44,13 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] Sprite level1Background;
     [SerializeField] Sprite level2Background;
     [SerializeField] Sprite level3Background;
+    [SerializeField] Sprite level4Background;
     [SerializeField] GameObject levelBackground;
 
     [Header("Stats")]
     [SerializeField] TextMeshProUGUI planetText;
     [SerializeField] TextMeshProUGUI starText;
+    [SerializeField] TextMeshProUGUI neutronStarText;
     [SerializeField] TextMeshProUGUI blackHoleText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -110,6 +113,7 @@ public class LevelSelectScript : MonoBehaviour
         planetText.text = gameManagerScript.levelData.level1Score.ToString();
         starText.text = gameManagerScript.levelData.level2Score.ToString();
         blackHoleText.text = gameManagerScript.levelData.level3Score.ToString();
+        neutronStarText.text = gameManagerScript.levelData.level4Score.ToString();
     }
 
     // Show stats
@@ -166,6 +170,7 @@ public class LevelSelectScript : MonoBehaviour
         
         gameManagerScript.levelData.level2Unlocked = true;
         gameManagerScript.levelData.level3Unlocked = true;
+        gameManagerScript.levelData.level4Unlocked = true;
         gameManagerScript.levelData.badgeUnlocked = true;
 
         LevelButtonCheck();
@@ -204,6 +209,17 @@ public class LevelSelectScript : MonoBehaviour
         LoadLevel(GameManagerScript.Level.Level3);
     }
 
+    // Load level 3
+    public void Level4Button()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+
+        menuAudio.clip = interactSound;
+        menuAudio.Play();
+
+        LoadLevel(GameManagerScript.Level.Level4);
+    }
+
     // Show a prompt that the player has earned the Captain's badge
     public void BadgeButton()
     {
@@ -221,7 +237,11 @@ public class LevelSelectScript : MonoBehaviour
         {
             gameManagerScript.levelData.level2Unlocked = true;
         }
-        if (gameManagerScript.levelData.level2Score > gameScript.unlockScore && !gameManagerScript.levelData.level3Unlocked)
+        if (gameManagerScript.levelData.level2Score > gameScript.unlockScore && !gameManagerScript.levelData.level4Unlocked)
+        {
+            gameManagerScript.levelData.level4Unlocked = true;
+        }
+        if (gameManagerScript.levelData.level4Score > gameScript.unlockScore && !gameManagerScript.levelData.level3Unlocked)
         {
             gameManagerScript.levelData.level3Unlocked = true;
         }
@@ -246,6 +266,15 @@ public class LevelSelectScript : MonoBehaviour
         else
         {
             level3Button.interactable = false;
+        }
+
+        if (gameManagerScript.levelData.level4Unlocked)
+        {
+            level4Button.interactable = true;
+        }
+        else
+        {
+            level4Button.interactable = false;
         }
 
         if (gameManagerScript.levelData.badgeUnlocked)
@@ -290,6 +319,14 @@ public class LevelSelectScript : MonoBehaviour
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level3;
                 obstacleSpawnerScript.maxObstacles = gameScript.blackHoleObstacles;
                 obstacleSpawnerScript.baseSpeed = gameScript.blackHoleSpeed;
+            break;
+            case GameManagerScript.Level.Level4:
+                // Load level 3 assets and variables
+                backgroundImage = level4Background;
+                gameScript.gravityForce = gameScript.neutronStarGravity;
+                gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level4;
+                obstacleSpawnerScript.maxObstacles = gameScript.neutronStarObstacles;
+                obstacleSpawnerScript.baseSpeed = gameScript.neutronStarSpeed;
             break;
             default:
                 //

@@ -6,7 +6,8 @@ public class GameManagerScript : MonoBehaviour
     public enum Level{
         Level1,
         Level2,
-        Level3
+        Level3,
+        Level4,
     };
 
     // Structs
@@ -16,8 +17,10 @@ public class GameManagerScript : MonoBehaviour
         public int level1Score;
         public int level2Score;
         public int level3Score;
+        public int level4Score;
         public bool level2Unlocked;
         public bool level3Unlocked;
+        public bool level4Unlocked;
         public bool badgeUnlocked;
         public Level currentLevel;
     };
@@ -42,9 +45,11 @@ public class GameManagerScript : MonoBehaviour
         levelData.level1Score = 0;
         levelData.level2Score = 0;
         levelData.level3Score = 0;
+        levelData.level4Score = 0;
 
         levelData.level2Unlocked = false;
         levelData.level3Unlocked = false;
+        levelData.level4Unlocked = false;
         levelData.badgeUnlocked = false;
     }
 
