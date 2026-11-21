@@ -45,8 +45,11 @@ public class ObstacleScript : MonoBehaviour
             playerScript.Damage();
             Explode(collision);
         }
-        obstacleSpawner.obstacleCount--;
-        Destroy(gameObject);
+        if (!collision.gameObject.CompareTag("Border"))
+        {
+            obstacleSpawner.obstacleCount--;
+            Destroy(gameObject);
+        }
     }
 
     // Play explode effect and destroy

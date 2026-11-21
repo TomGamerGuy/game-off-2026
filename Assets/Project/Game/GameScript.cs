@@ -34,6 +34,7 @@ public class GameScript : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip interactSound;
+    [SerializeField] AudioClip countdownSound;
     public AudioSource audioSource2;
 
     [Header("Game Variables")]
@@ -242,7 +243,7 @@ public class GameScript : MonoBehaviour
         {
             countdownText.text = i.ToString();
 
-            audioSource2.clip = interactSound;
+            audioSource2.clip = countdownSound;
             audioSource2.Play();
 
             yield return new WaitForSecondsRealtime(1f);
@@ -250,6 +251,5 @@ public class GameScript : MonoBehaviour
 
         countdownCanvas.SetActive(false);
         Time.timeScale = 1.0f;
-
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class LevelSelectScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] Canvas cheatMenu;
     [SerializeField] Canvas badgeCanvas;
     [SerializeField] GameObject infoCanvas;
+    [SerializeField] GameObject statCanvas;
 
     [Header("Buttons")]
     [SerializeField] Button muteButton;
@@ -43,6 +45,11 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] Sprite level3Background;
     [SerializeField] GameObject levelBackground;
 
+    [Header("Stats")]
+    [SerializeField] TextMeshProUGUI planetText;
+    [SerializeField] TextMeshProUGUI starText;
+    [SerializeField] TextMeshProUGUI blackHoleText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -56,6 +63,7 @@ public class LevelSelectScript : MonoBehaviour
         badgeButton.gameObject.SetActive(false);
         badgeCanvas.gameObject.SetActive(false);
         infoCanvas.SetActive(false);
+        statCanvas.SetActive(false);
 
         LevelButtonCheck();
 
@@ -93,6 +101,26 @@ public class LevelSelectScript : MonoBehaviour
         menuAudio.Play();
         
         infoCanvas.SetActive(!infoCanvas.activeSelf);
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    // Update stats
+    void UpdateStats()
+    {
+        planetText.text = gameManagerScript.levelData.level1Score.ToString();
+        starText.text = gameManagerScript.levelData.level2Score.ToString();
+        blackHoleText.text = gameManagerScript.levelData.level3Score.ToString();
+    }
+
+    // Show stats
+    public void StatButton()
+    {
+        menuAudio.clip = interactSound;
+        menuAudio.Play();
+
+        UpdateStats();
+        
+        statCanvas.SetActive(!statCanvas.activeSelf);
         EventSystem.current.SetSelectedGameObject(null);
     }
 
