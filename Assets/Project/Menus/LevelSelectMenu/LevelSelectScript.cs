@@ -89,6 +89,9 @@ public class LevelSelectScript : MonoBehaviour
     // Shows info prompt
     public void InfoButton()
     {
+        menuAudio.clip = interactSound;
+        menuAudio.Play();
+        
         infoCanvas.SetActive(!infoCanvas.activeSelf);
         EventSystem.current.SetSelectedGameObject(null);
     }
@@ -176,6 +179,9 @@ public class LevelSelectScript : MonoBehaviour
     // Show a prompt that the player has earned the Captain's badge
     public void BadgeButton()
     {
+        menuAudio.clip = interactSound;
+        menuAudio.Play();
+        
         badgeCanvas.gameObject.SetActive(!badgeCanvas.gameObject.activeSelf);
         EventSystem.current.SetSelectedGameObject(null);
     }

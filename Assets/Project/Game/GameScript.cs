@@ -33,6 +33,8 @@ public class GameScript : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip interactSound;
+    public AudioSource audioSource2;
 
     [Header("Game Variables")]
     public float gravityForce;
@@ -72,6 +74,9 @@ public class GameScript : MonoBehaviour
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && !countdownCanvas.activeSelf)
             {                  
                 // Activate prompt
+                audioSource2.clip = interactSound;
+                audioSource2.Play();
+
                 backCanvas.SetActive(true);
                 Time.timeScale = 0.0f;
             }
@@ -81,6 +86,9 @@ public class GameScript : MonoBehaviour
     // Restart the level
     public void RestartButton()
     {
+        audioSource2.clip = interactSound;
+        audioSource2.Play();
+        
         EventSystem.current.SetSelectedGameObject(null);
 
         gameOverCanvas.SetActive(false);
@@ -90,6 +98,9 @@ public class GameScript : MonoBehaviour
     // If the yes button is clicked on the back menu
     public void BackYes()
     {
+        audioSource2.clip = interactSound;
+        audioSource2.Play();
+        
         EventSystem.current.SetSelectedGameObject(null);
 
         backCanvas.SetActive(false);
@@ -103,6 +114,9 @@ public class GameScript : MonoBehaviour
     // If the no button is clicked on the back menu
     public void BackNo()
     {
+        audioSource2.clip = interactSound;
+        audioSource2.Play();
+        
         EventSystem.current.SetSelectedGameObject(null);
 
         backCanvas.SetActive(false);
@@ -227,6 +241,9 @@ public class GameScript : MonoBehaviour
         for (int i = start; i > 0; i--)
         {
             countdownText.text = i.ToString();
+
+            audioSource2.clip = interactSound;
+            audioSource2.Play();
 
             yield return new WaitForSecondsRealtime(1f);
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObstacleSpawnerScript : MonoBehaviour
@@ -8,11 +9,13 @@ public class ObstacleSpawnerScript : MonoBehaviour
     [SerializeField] GameObject asteroidOne;
     [SerializeField] GameObject asteroidTwo;
     [SerializeField] GameObject asteroidThree;
+    [SerializeField] GameObject asteroidFour;
 
     [Header("Debris")]
     [SerializeField] GameObject debrisOne;
     [SerializeField] GameObject debrisTwo;
     [SerializeField] GameObject debrisThree;
+    [SerializeField] GameObject debrisFour;
 
     [Header("Player")]
     public GameObject player;
@@ -21,7 +24,6 @@ public class ObstacleSpawnerScript : MonoBehaviour
     [Header("Game Manager")]
     [SerializeField] GameObject gameManager;
     [SerializeField] GameObject gameCanvas;
-    private GameManagerScript gameManagerScript;
     private GameScript gameScript;
 
     [Header("Obstacles")]
@@ -37,7 +39,6 @@ public class ObstacleSpawnerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameManagerScript = gameManager.GetComponent<GameManagerScript>();
         gameScript = gameManager.GetComponent<GameScript>();
         playerScript = player.GetComponent<PlayerScript>();
 
@@ -66,38 +67,46 @@ public class ObstacleSpawnerScript : MonoBehaviour
             if (gameCanvas.activeSelf && obstacleCount < maxObstacles)
             {
                 // Spawn Obstacle
-                int type = UnityEngine.Random.Range(0, 7);
-                if (type == 6 && UnityEngine.Random.Range(0, 4) != 3)
+                int type = UnityEngine.Random.Range(1, 9);
+                if (type == 6 && UnityEngine.Random.Range(1, 4) != 3)
                 {
-                    type = UnityEngine.Random.Range(0, 6);
+                    type = UnityEngine.Random.Range(1, 9);
                 }
                 GameObject obstacle;
                 float x = UnityEngine.Random.Range(15.0f, 20.0f);
                 float y = UnityEngine.Random.Range(-5.0f, 5.0f);
                 Vector3 position = new Vector3(x, y, 0f);
 
+                Quaternion rotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
+
                 switch (type)
                 {
                     case 1:
-                        obstacle = Instantiate(asteroidOne, position, Quaternion.identity);
+                        obstacle = Instantiate(asteroidOne, position, rotation);
                     break;
                     case 2:
-                        obstacle = Instantiate(asteroidTwo, position, Quaternion.identity);
+                        obstacle = Instantiate(asteroidTwo, position, rotation);
                     break;
                     case 3:
-                        obstacle = Instantiate(asteroidThree, position, Quaternion.identity);
+                        obstacle = Instantiate(asteroidThree, position, rotation);
                     break;
                     case 4:
-                        obstacle = Instantiate(debrisOne, position, Quaternion.identity);
+                        obstacle = Instantiate(debrisOne, position, rotation);
                     break;
                     case 5:
-                        obstacle = Instantiate(debrisTwo, position, Quaternion.identity);
+                        obstacle = Instantiate(debrisTwo, position, rotation);
                     break;
                     case 6:
-                        obstacle = Instantiate(debrisThree, position, Quaternion.identity);
+                        obstacle = Instantiate(debrisThree, position, rotation);
+                    break;
+                    case 7:
+                        obstacle = Instantiate(asteroidFour, position, rotation);
+                    break;
+                    case 8:
+                        obstacle = Instantiate(debrisFour, position, rotation);
                     break;
                     default:
-                        obstacle = Instantiate(asteroidOne, position, Quaternion.identity);
+                        obstacle = Instantiate(asteroidOne, position, rotation);
                     break;
                 }
                 ObstacleScript obstacleScript = obstacle.GetComponent<ObstacleScript>();

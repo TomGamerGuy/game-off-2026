@@ -3347,6 +3347,7 @@ GameObject:
   - component: {fileID: 1298795443}
   - component: {fileID: 1298795444}
   - component: {fileID: 1298795442}
+  - component: {fileID: 1298795445}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3515,6 +3516,8 @@ MonoBehaviour:
   gameOverCanvas: {fileID: 1968679220}
   scoreCanvas: {fileID: 501388458}
   audioSource: {fileID: 1298795442}
+  interactSound: {fileID: 8300000, guid: 758cc9e8839228845abc06b74f555a8d, type: 3}
+  audioSource2: {fileID: 1298795445}
   gravityForce: 0
   playerSpeed: 6
   unlockScore: 1000
@@ -3542,9 +3545,11 @@ MonoBehaviour:
   asteroidOne: {fileID: 7671449380963220572, guid: 5ab31ed370bb3e042bd986dc065b7444, type: 3}
   asteroidTwo: {fileID: 2511597009622586237, guid: f58e57a524a70634db6ec24a056d4307, type: 3}
   asteroidThree: {fileID: 7937548048631946984, guid: 11e8bff4441f656439c0c4a63679ab60, type: 3}
+  asteroidFour: {fileID: 1099255274422396394, guid: 0184b5dea47b1124483502ecee9cec16, type: 3}
   debrisOne: {fileID: 8171943151061404015, guid: 63a125c5415945f448fda5f681de1c2c, type: 3}
   debrisTwo: {fileID: 8059076666683391022, guid: 265b6a44b7fb6f540987cacabf1cb688, type: 3}
   debrisThree: {fileID: 8833113747808095825, guid: dcc33723ea8c8d04da9cbca2f6ed3a28, type: 3}
+  debrisFour: {fileID: 6938847313861519178, guid: 8b1632eb336d1d5449a3f37bbd2bd686, type: 3}
   player: {fileID: 1949883158}
   gameManager: {fileID: 1298795439}
   gameCanvas: {fileID: 162796157}
@@ -3552,6 +3557,103 @@ MonoBehaviour:
   maxWaitTime: 0.9
   obstacleScore: 10
   explosionEffect: {fileID: 2569630062737607726, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
+--- !u!82 &1298795445
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298795439}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1308211859
 GameObject:
   m_ObjectHideFlags: 0
@@ -5866,6 +5968,7 @@ MonoBehaviour:
   baseFlame: {fileID: 478485205}
   brokenFlame: {fileID: 74341438}
   collisionSound: {fileID: 8300000, guid: 3e933f57455b9c146a544bb9b245e0d0, type: 3}
+  audioSource: {fileID: 1949883164}
   rb: {fileID: 1949883162}
   spawnPosition: {x: -6.69, y: 2.27}
 --- !u!82 &1949883164

@@ -18,7 +18,6 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] AudioClip collisionSound;
-    private AudioSource audioSource;
 
     [Header("Components")]
     public Rigidbody2D rb;
@@ -34,7 +33,6 @@ public class PlayerScript : MonoBehaviour
     {
         gameScript = gameManager.GetComponent<GameScript>();
         rb.freezeRotation = true;
-        audioSource = GetComponent<AudioSource>();
         shieldFlame.SetActive(true);
         baseFlame.SetActive(false);
         brokenFlame.SetActive(false);
@@ -56,15 +54,6 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.gameObject.CompareTag("Border"))
-        {
-            audioSource.clip = collisionSound;
-            audioSource.Play();
-        }
     }
 
     // Load the correct sprites for health
@@ -110,6 +99,9 @@ public class PlayerScript : MonoBehaviour
     // Damage the player
     public void Damage()
     { 
+        gameScript.audioSource2.clip = collisionSound;
+        gameScript.audioSource2.Play();
+        
         health--;
         if (health <= 0)
         {
