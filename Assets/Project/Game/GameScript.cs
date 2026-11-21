@@ -43,6 +43,8 @@ public class GameScript : MonoBehaviour
     public int unlockScore = 1000;
     [NonSerialized] public int score;
 
+    [SerializeField] int countdownStart = 3;
+
     [Header("Level Variables")]
     public float planetGravity = 2f;
     public float starGravity = 4f;
@@ -199,7 +201,7 @@ public class GameScript : MonoBehaviour
         gameOverCanvas.SetActive(false);
         
         //Do the countdown
-        StartCoroutine(Countdown(3));
+        StartCoroutine(Countdown(countdownStart));
     }
 
     private IEnumerator Countdown(int start)

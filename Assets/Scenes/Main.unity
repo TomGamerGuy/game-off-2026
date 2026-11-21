@@ -3885,7 +3885,7 @@ MonoBehaviour:
   gameManagerScript: {fileID: 1298795440}
   levelSelectScript: {fileID: 870081266}
   player: {fileID: 1949883158}
-  explosionEffect: {fileID: 2569630062737607726, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
+  explosionEffect: {fileID: 3424988162096125572, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
   gameCanvas: {fileID: 162796157}
   levelSelectMenu: {fileID: 573877796}
   scoreText: {fileID: 1122938983}
@@ -3898,11 +3898,12 @@ MonoBehaviour:
   scoreCanvas: {fileID: 501388458}
   audioSource: {fileID: 1298795442}
   interactSound: {fileID: 8300000, guid: 758cc9e8839228845abc06b74f555a8d, type: 3}
-  countdownSound: {fileID: 8300000, guid: 758cc9e8839228845abc06b74f555a8d, type: 3}
+  countdownSound: {fileID: 8300000, guid: 43f34b1cd8c5cac489c2533e80f671e7, type: 3}
   audioSource2: {fileID: 1298795445}
   gravityForce: 0
   playerSpeed: 6
   unlockScore: 1000
+  countdownStart: 3
   planetGravity: 2
   starGravity: 4
   blackHoleGravity: 6
@@ -3938,7 +3939,7 @@ MonoBehaviour:
   minWaitTime: 0
   maxWaitTime: 0.9
   obstacleScore: 10
-  explosionEffect: {fileID: 2569630062737607726, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
+  explosionEffect: {fileID: 3424988162096125572, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
 --- !u!82 &1298795445
 AudioSource:
   m_ObjectHideFlags: 0
