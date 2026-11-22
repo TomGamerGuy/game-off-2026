@@ -282,6 +282,7 @@ public class LevelSelectScript : MonoBehaviour
         if (gameManagerScript.levelData.badgeUnlocked)
         {
             badgeButton.gameObject.SetActive(true);
+            cheatButton.interactable = false;
         }
         else
         {

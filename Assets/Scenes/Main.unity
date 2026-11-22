@@ -4599,12 +4599,12 @@ MonoBehaviour:
   blackHoleGravity: 10
   planetObstacles: 6
   starObstacles: 8
-  neutronStarObstacles: 10
-  blackHoleObstacles: 12
+  neutronStarObstacles: 8
+  blackHoleObstacles: 10
   planetSpeed: 6
   starSpeed: 8
   neutronStarSpeed: 10
-  blackHoleSpeed: 12
+  blackHoleSpeed: 10
 --- !u!114 &1298795444
 MonoBehaviour:
   m_ObjectHideFlags: 0
