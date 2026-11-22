@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.EventSystems;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class GameScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI unlockText;
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] GameObject scoreCanvas;
+    [SerializeField] Button nextButton;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
@@ -196,7 +198,9 @@ public class GameScript : MonoBehaviour
             return;
         }
         
+        gameManagerScript.levelData.deathCount++;
         ScoreCheck();
+        NextCheck();
 
         Instantiate(explosionEffect, player.transform.position, Quaternion.identity);
 
@@ -278,5 +282,66 @@ public class GameScript : MonoBehaviour
 
         countdownCanvas.SetActive(false);
         Time.timeScale = 1.0f;
+    }
+
+    // Load next level is available
+    public void NextButton()
+    {
+        switch (gameManagerScript.levelData.currentLevel)
+        {
+            case GameManagerScript.Level.Level1:
+                levelSelectScript.Level2Button();
+            break;
+            case GameManagerScript.Level.Level2:
+                levelSelectScript.Level4Button();
+            break;
+            case GameManagerScript.Level.Level4:
+                levelSelectScript.Level3Button();
+            break;
+            default:
+                //
+            break;
+        }
+    }
+
+    // Check if next should be active
+    void NextCheck()
+    {
+        switch (gameManagerScript.levelData.currentLevel)
+        {
+            case GameManagerScript.Level.Level1:
+                if (gameManagerScript.levelData.level2Unlocked)
+                {
+                    nextButton.interactable = true;
+                }
+                else
+                {
+                    nextButton.interactable = false;
+                }
+            break;
+            case GameManagerScript.Level.Level2:
+                if (gameManagerScript.levelData.level4Unlocked)
+                {
+                    nextButton.interactable = true;
+                }
+                else
+                {
+                    nextButton.interactable = false;
+                }
+            break;
+            case GameManagerScript.Level.Level4:
+                if (gameManagerScript.levelData.level3Unlocked)
+                {
+                    nextButton.interactable = true;
+                }
+                else
+                {
+                    nextButton.interactable = false;
+                }
+            break;
+            case GameManagerScript.Level.Level3:
+                nextButton.interactable = false;
+            break;
+        }
     }
 }

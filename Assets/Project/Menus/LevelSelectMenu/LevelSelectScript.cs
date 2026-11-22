@@ -52,6 +52,7 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI starText;
     [SerializeField] TextMeshProUGUI neutronStarText;
     [SerializeField] TextMeshProUGUI blackHoleText;
+    [SerializeField] TextMeshProUGUI deathText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -114,6 +115,7 @@ public class LevelSelectScript : MonoBehaviour
         starText.text = gameManagerScript.levelData.level2Score.ToString();
         blackHoleText.text = gameManagerScript.levelData.level3Score.ToString();
         neutronStarText.text = gameManagerScript.levelData.level4Score.ToString();
+        deathText.text = gameManagerScript.levelData.deathCount.ToString();
     }
 
     // Show stats

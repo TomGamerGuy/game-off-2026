@@ -30,7 +30,7 @@ public class ObstacleScript : MonoBehaviour
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
 
-        if (transform.position.x < -15f)
+        if (transform.position.x < -10f)
         {
             obstacleSpawner.obstacleCount--;
             gameScript.UpdateScore(obstacleSpawner.obstacleScore);

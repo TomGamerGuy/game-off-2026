@@ -23,6 +23,7 @@ public class GameManagerScript : MonoBehaviour
         public bool level4Unlocked;
         public bool badgeUnlocked;
         public Level currentLevel;
+        public int deathCount;
     };
     
     [Header("Audio")]
@@ -46,6 +47,7 @@ public class GameManagerScript : MonoBehaviour
         levelData.level2Score = 0;
         levelData.level3Score = 0;
         levelData.level4Score = 0;
+        levelData.deathCount = 0;
 
         levelData.level2Unlocked = false;
         levelData.level3Unlocked = false;
