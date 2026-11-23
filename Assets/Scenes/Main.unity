@@ -4612,10 +4612,10 @@ MonoBehaviour:
   starScore: 10
   neutronStarScore: 10
   blackHoleScore: 10
-  starUnlockScore: 500
+  starUnlockScore: 750
   neutronStarUnlockScore: 1000
-  blackHoleUnlockScore: 1500
-  badgeUnlockScore: 2000
+  blackHoleUnlockScore: 1250
+  badgeUnlockScore: 1500
 --- !u!114 &1298795444
 MonoBehaviour:
   m_ObjectHideFlags: 0
