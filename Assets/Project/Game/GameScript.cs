@@ -32,34 +32,55 @@ public class GameScript : MonoBehaviour
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] GameObject scoreCanvas;
     [SerializeField] Button nextButton;
+    [SerializeField] float goldTextDuration = 2f;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip interactSound;
     [SerializeField] AudioClip countdownSound;
     public AudioSource audioSource2;
+    [SerializeField] AudioSource audioSource3;
+    [SerializeField] AudioClip unlockSound;
 
     [Header("Game Variables")]
     public float gravityForce;
     public float playerSpeed;
-    public int unlockScore = 1000;
+    [NonSerialized] public int unlockScore;
     [NonSerialized] public int score;
 
     [SerializeField] int countdownStart = 3;
+    [NonSerialized] public bool unlockSoundPlayed = false;
 
     [Header("Level Variables")]
+    [Header("Gravity")]
     public float planetGravity = 2f;
     public float starGravity = 4f;
     public float neutronStarGravity = 6f;
     public float blackHoleGravity = 6f;
+
+    [Header("Obstacles")]
     public int planetObstacles = 8;
     public int starObstacles = 10;
     public int neutronStarObstacles = 12;
     public int blackHoleObstacles = 12;
+
+    [Header("Speed")]
     public float planetSpeed = 10f;
     public float starSpeed = 10f;
     public float neutronStarSpeed = 10f;
     public float blackHoleSpeed = 10f;
+
+    [Header("Score")]
+    public int planetScore = 10;
+    public int starScore = 10;
+    public int neutronStarScore = 5;
+    public int blackHoleScore = 5;
+
+    [Header("Unlock Score")]
+    public int starUnlockScore = 500;
+    public int neutronStarUnlockScore = 1000;
+    public int blackHoleUnlockScore = 1500;
+    public int badgeUnlockScore = 2000;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -128,7 +149,56 @@ public class GameScript : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
 
         backCanvas.SetActive(false);
-        Time.timeScale = 1.0f;
+        StartCoroutine(Countdown(countdownStart));
+    }
+
+    void UnlockCheck()
+    {
+        if (gameManagerScript.levelData.level1Score >= unlockScore && !gameManagerScript.levelData.level2Unlocked)
+        {
+            gameManagerScript.levelData.level2Unlocked = true;
+            UnlockSound();
+        }
+        if (gameManagerScript.levelData.level2Score >= unlockScore && !gameManagerScript.levelData.level4Unlocked)
+        {
+            gameManagerScript.levelData.level4Unlocked = true;
+            UnlockSound();
+        }
+        if (gameManagerScript.levelData.level4Score >= unlockScore && !gameManagerScript.levelData.level3Unlocked)
+        {
+            gameManagerScript.levelData.level3Unlocked = true;
+            UnlockSound();
+        }
+        if (gameManagerScript.levelData.level3Score >= unlockScore && !gameManagerScript.levelData.badgeUnlocked)
+        {
+            gameManagerScript.levelData.badgeUnlocked = true;
+            UnlockSound();
+        }
+    }
+
+    // Play the unlock sound
+    void UnlockSound()
+    {
+        if (unlockSoundPlayed)
+        {
+            return;
+        }
+        
+        unlockSoundPlayed = true;
+
+        audioSource3.clip = unlockSound;
+        audioSource3.Play();
+
+        StartCoroutine(UnlockRoutine(goldTextDuration));
+    }
+
+    private IEnumerator UnlockRoutine(float seconds)
+    {
+        highScoreText.color = Color.gold;
+    
+        yield return new WaitForSeconds(seconds);
+
+        highScoreText.color = Color.white;
     }
 
     // Add the parameter to the correct score and update
@@ -188,6 +258,7 @@ public class GameScript : MonoBehaviour
                 //
             break;
         }
+        UnlockCheck();
         levelSelectScript.LevelButtonCheck();
     }
 

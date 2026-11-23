@@ -234,24 +234,7 @@ public class LevelSelectScript : MonoBehaviour
 
     // Check the tint and interactivity of buttons based on level data
     public void LevelButtonCheck()
-    {     
-        if (gameManagerScript.levelData.level1Score > gameScript.unlockScore && !gameManagerScript.levelData.level2Unlocked)
-        {
-            gameManagerScript.levelData.level2Unlocked = true;
-        }
-        if (gameManagerScript.levelData.level2Score > gameScript.unlockScore && !gameManagerScript.levelData.level4Unlocked)
-        {
-            gameManagerScript.levelData.level4Unlocked = true;
-        }
-        if (gameManagerScript.levelData.level4Score > gameScript.unlockScore && !gameManagerScript.levelData.level3Unlocked)
-        {
-            gameManagerScript.levelData.level3Unlocked = true;
-        }
-        if (gameManagerScript.levelData.level3Score > gameScript.unlockScore && !gameManagerScript.levelData.badgeUnlocked)
-        {
-            gameManagerScript.levelData.badgeUnlocked = true;
-        }
-        
+    {      
         if (gameManagerScript.levelData.level2Unlocked)
         {
             level2Button.interactable = true;
@@ -306,6 +289,8 @@ public class LevelSelectScript : MonoBehaviour
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level1;
                 obstacleSpawnerScript.maxObstacles = gameScript.planetObstacles;
                 obstacleSpawnerScript.baseSpeed = gameScript.planetSpeed;
+                obstacleSpawnerScript.obstacleScore = gameScript.planetScore;
+                gameScript.unlockScore = gameScript.starUnlockScore;
             break;
             case GameManagerScript.Level.Level2:
                 // Load level 2 assets and variables
@@ -314,6 +299,8 @@ public class LevelSelectScript : MonoBehaviour
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level2;
                 obstacleSpawnerScript.maxObstacles = gameScript.starObstacles;
                 obstacleSpawnerScript.baseSpeed = gameScript.starSpeed;
+                obstacleSpawnerScript.obstacleScore = gameScript.starScore;
+                gameScript.unlockScore = gameScript.neutronStarUnlockScore;
             break;
             case GameManagerScript.Level.Level3:
                 // Load level 3 assets and variables
@@ -322,6 +309,8 @@ public class LevelSelectScript : MonoBehaviour
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level3;
                 obstacleSpawnerScript.maxObstacles = gameScript.blackHoleObstacles;
                 obstacleSpawnerScript.baseSpeed = gameScript.blackHoleSpeed;
+                obstacleSpawnerScript.obstacleScore = gameScript.blackHoleScore;
+                gameScript.unlockScore = gameScript.badgeUnlockScore;
             break;
             case GameManagerScript.Level.Level4:
                 // Load level 3 assets and variables
@@ -330,6 +319,8 @@ public class LevelSelectScript : MonoBehaviour
                 gameManagerScript.levelData.currentLevel = GameManagerScript.Level.Level4;
                 obstacleSpawnerScript.maxObstacles = gameScript.neutronStarObstacles;
                 obstacleSpawnerScript.baseSpeed = gameScript.neutronStarSpeed;
+                obstacleSpawnerScript.obstacleScore = gameScript.neutronStarScore;
+                gameScript.unlockScore = gameScript.blackHoleUnlockScore;
             break;
             default:
                 //
@@ -343,6 +334,7 @@ public class LevelSelectScript : MonoBehaviour
         gameScript.UpdateScore(0, 0);
         playerScript.SetHealth();
         obstacleSpawnerScript.obstacleCount = 0;
+        gameScript.unlockSoundPlayed = false;
 
         // Destroy active obstacles
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");

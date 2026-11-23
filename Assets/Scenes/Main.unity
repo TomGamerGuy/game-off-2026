@@ -4414,6 +4414,7 @@ GameObject:
   - component: {fileID: 1298795444}
   - component: {fileID: 1298795442}
   - component: {fileID: 1298795445}
+  - component: {fileID: 1298795446}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4585,26 +4586,36 @@ MonoBehaviour:
   gameOverCanvas: {fileID: 1968679220}
   scoreCanvas: {fileID: 501388458}
   nextButton: {fileID: 1094408660}
+  goldTextDuration: 2
   audioSource: {fileID: 1298795442}
   interactSound: {fileID: 8300000, guid: 758cc9e8839228845abc06b74f555a8d, type: 3}
   countdownSound: {fileID: 8300000, guid: 43f34b1cd8c5cac489c2533e80f671e7, type: 3}
   audioSource2: {fileID: 1298795445}
+  audioSource3: {fileID: 1298795446}
+  unlockSound: {fileID: 8300000, guid: 4ca01996fa6e83d4aa38b6f8e1662ac1, type: 3}
   gravityForce: 0
   playerSpeed: 6
-  unlockScore: 1000
   countdownStart: 3
   planetGravity: 4
   starGravity: 6
   neutronStarGravity: 8
   blackHoleGravity: 10
-  planetObstacles: 6
-  starObstacles: 6
-  neutronStarObstacles: 6
-  blackHoleObstacles: 8
+  planetObstacles: 8
+  starObstacles: 10
+  neutronStarObstacles: 12
+  blackHoleObstacles: 14
   planetSpeed: 6
   starSpeed: 8
   neutronStarSpeed: 10
   blackHoleSpeed: 12
+  planetScore: 10
+  starScore: 10
+  neutronStarScore: 10
+  blackHoleScore: 10
+  starUnlockScore: 500
+  neutronStarUnlockScore: 1000
+  blackHoleUnlockScore: 1500
+  badgeUnlockScore: 2000
 --- !u!114 &1298795444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4629,10 +4640,106 @@ MonoBehaviour:
   gameManager: {fileID: 1298795439}
   gameCanvas: {fileID: 162796157}
   minWaitTime: 0
-  maxWaitTime: 0.5
-  obstacleScore: 10
+  maxWaitTime: 0
   explosionEffect: {fileID: 3424988162096125572, guid: 1930ab216777ddf43812016ccfb26960, type: 3}
 --- !u!82 &1298795445
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298795439}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1298795446
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
