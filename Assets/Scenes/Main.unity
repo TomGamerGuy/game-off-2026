@@ -4603,11 +4603,11 @@ MonoBehaviour:
   planetObstacles: 8
   starObstacles: 10
   neutronStarObstacles: 12
-  blackHoleObstacles: 14
+  blackHoleObstacles: 12
   planetSpeed: 6
   starSpeed: 8
   neutronStarSpeed: 10
-  blackHoleSpeed: 12
+  blackHoleSpeed: 10
   planetScore: 10
   starScore: 10
   neutronStarScore: 10

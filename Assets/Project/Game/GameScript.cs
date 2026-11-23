@@ -195,10 +195,12 @@ public class GameScript : MonoBehaviour
     private IEnumerator UnlockRoutine(float seconds)
     {
         highScoreText.color = Color.gold;
+        scoreText.color = Color.gold;
     
         yield return new WaitForSeconds(seconds);
 
         highScoreText.color = Color.white;
+        scoreText.color = Color.white;
     }
 
     // Add the parameter to the correct score and update

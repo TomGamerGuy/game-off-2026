@@ -73,7 +73,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
                     type = UnityEngine.Random.Range(1, 9);
                 }
                 GameObject obstacle;
-                float x = UnityEngine.Random.Range(15.0f, 50.0f - baseSpeed);
+                float x = UnityEngine.Random.Range(15.0f, 50.0f);
                 float y = UnityEngine.Random.Range(-5.0f, 5.0f);
                 Vector3 position = new Vector3(x, y, 0f);
 
